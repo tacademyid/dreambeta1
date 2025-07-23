@@ -1,0 +1,26 @@
+[
+  {
+    "judul": "Petualangan Teh dan Donat",
+    "karakterUtama": "Doni si Donat",
+    "hewanPendamping": "Burung Camar Lapar",
+    "makhlukAneh": "Monster Teh Manis",
+    "durasi": "8",
+    "efekSuara": "Plop! Ciuuuu! Ding!",
+    "visualStyle": "DreamWorks, penuh warna dan ekspresif seperti kartun 3D",
+    "deskripsiKarakterUtama": "Doni, donat bulat dengan mata besar dan lengan kecil, sering salah paham tapi selalu semangat",
+    "deskripsiHewanPendamping": "Burung camar putih berkacamata, suka mencuri makanan dan menyanyi opera",
+    "deskripsiMakhlukAneh": "Monster teh manis dengan tubuh cair, bisa berubah bentuk dan sangat sensitif terhadap suhu"
+  },
+  {
+    "judul": "Kulkas Berlari di Tengah Kota",
+    "karakterUtama": "Frigo si Kulkas",
+    "hewanPendamping": "Anjing Robot",
+    "makhlukAneh": "Awan Kecap",
+    "durasi": "10",
+    "efekSuara": "Whoosh! Clang! Greeek!",
+    "visualStyle": "Pixar-style dengan shading lembut dan gaya komedi visual cepat",
+    "deskripsiKarakterUtama": "Frigo, kulkas dua pintu dengan kaki robotik dan hati sensitif",
+    "deskripsiHewanPendamping": "Anjing robot berbentuk pemanggang roti dengan lidah dari kabel USB",
+    "deskripsiMakhlukAneh": "Awan beraroma kecap yang bisa membentuk wajah dan berbicara pakai rima"
+  }
+]

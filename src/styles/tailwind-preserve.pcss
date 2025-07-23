@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌙 Global transition (boleh dipakai) */
+@layer base {
+  html, body {
+    @apply transition-colors duration-300 ease-in-out;
+  }
+}
+
+/* ✅ Class utilitas untuk label yang mendukung dark mode */
+@layer utilities {
+  .force-label-dark {
+    @apply text-gray-800 dark:text-gray-200;
+  }
+}
