@@ -20,12 +20,12 @@ const ModularForm = ({ onGenerate, template }) => {
   });
 
   const [customScenes, setCustomScenes] = useState({
-  scene1: { aksi: "", sfx: "", dialogKarakter: "", dialogHewan: "", dialogMakhluk: "" },
-  scene2: { aksi: "", sfx: "", dialogKarakter: "", dialogHewan: "", dialogMakhluk: "" },
-  scene3: { aksi: "", sfx: "", dialogKarakter: "", dialogHewan: "", dialogMakhluk: "" },
-  scene4: { aksi: "", sfx: "", dialogKarakter: "", dialogHewan: "", dialogMakhluk: "" },
-  scene5: { aksi: "", sfx: "", dialogKarakter: "", dialogHewan: "", dialogMakhluk: "" },
-  scene6: { aksi: "", sfx: "", dialogKarakter: "", dialogHewan: "", dialogMakhluk: "" },
+  scene1: { promptVisual: "", aksi: "", sfx: "", dialogKarakter: "", dialogHewan: "", dialogMakhluk: "" },
+  scene2: { promptVisual: "", aksi: "", sfx: "", dialogKarakter: "", dialogHewan: "", dialogMakhluk: "" },
+  scene3: { promptVisual: "", aksi: "", sfx: "", dialogKarakter: "", dialogHewan: "", dialogMakhluk: "" },
+  scene4: { promptVisual: "", aksi: "", sfx: "", dialogKarakter: "", dialogHewan: "", dialogMakhluk: "" },
+  scene5: { promptVisual: "", aksi: "", sfx: "", dialogKarakter: "", dialogHewan: "", dialogMakhluk: "" },
+  scene6: { promptVisual: "", aksi: "", sfx: "", dialogKarakter: "", dialogHewan: "", dialogMakhluk: "" },
 });
 
 
@@ -63,15 +63,24 @@ function autofillModularScenesFromTemplate(template) {
   Object.keys(customScenes).forEach((sceneKey) => {
     const scene = customScenes[sceneKey];
     // Minimal isi salah satu agar tidak kosong total
-    if (scene.aksi.trim() || scene.sfx.trim() || scene.dialogKarakter.trim() || scene.dialogHewan.trim() || scene.dialogMakhluk.trim()) {
-      mergedCustomScenes[sceneKey] = {
-        aksi: scene.aksi.trim(),
-        sfx: scene.sfx.trim(),
-        dialogKarakter: scene.dialogKarakter.trim(),
-        dialogHewan: scene.dialogHewan.trim(),
-        dialogMakhluk: scene.dialogMakhluk.trim(),
-      };
-    }
+    if (
+  (scene.promptVisual && scene.promptVisual.trim()) ||
+  (scene.aksi && scene.aksi.trim()) ||
+  (scene.sfx && scene.sfx.trim()) ||
+  (scene.dialogKarakter && scene.dialogKarakter.trim()) ||
+  (scene.dialogHewan && scene.dialogHewan.trim()) ||
+  (scene.dialogMakhluk && scene.dialogMakhluk.trim())
+ )
+ {
+  mergedCustomScenes[sceneKey] = {
+    promptVisual: scene.promptVisual?.trim() || "",
+    aksi: scene.aksi?.trim() || "",
+    sfx: scene.sfx?.trim() || "",
+    dialogKarakter: scene.dialogKarakter?.trim() || "",
+    dialogHewan: scene.dialogHewan?.trim() || "",
+    dialogMakhluk: scene.dialogMakhluk?.trim() || "",
+  };
+}
   });
 
   onGenerate?.({
@@ -323,6 +332,32 @@ const handleTemplateSelect = (tpl) => {
 
       {/* Aksi Multi Karakter */}
       <div className="rounded-xl bg-orange-100 dark:bg-orange-900/30 p-3 shadow-sm mb-2 flex flex-col">
+
+       {/* 🎨 Prompt Visual */}
+<div className="rounded-xl bg-pink-50 dark:bg-pink-900/30 p-3 shadow-sm mb-2 flex flex-col">
+  <div className="font-bold mb-1 flex items-center gap-2 text-pink-700 dark:text-pink-200">
+    🎨 Prompt Visual (Deskripsi Suasana Visual Absurd)
+  </div>
+  <textarea
+    rows={2}
+    value={customScenes[`scene${num}`]?.promptVisual || ""}
+    onChange={(e) =>
+      setCustomScenes((prev) => ({
+        ...prev,
+        [`scene${num}`]: {
+          ...prev[`scene${num}`],
+          promptVisual: e.target.value,
+        },
+      }))
+    }
+    className="w-full border rounded p-2 mt-1 bg-white dark:bg-pink-950/50"
+    placeholder={`Contoh: Gaya Monsters vs. Aliens dicampur kampung Indonesia. Langit ungu, burung pakai jaket jeans...`}
+  />
+  <span className="text-xs text-gray-500 dark:text-pink-200 mt-1">
+    Tulis deskripsi visual utama yang menggambarkan suasana scene ini secara absurd dan kreatif.
+  </span>
+</div>
+
         <div className="font-bold mb-1 flex items-center gap-2 text-orange-700 dark:text-yellow-200">
           🎬 Aksi Karakter (Bebas karakter mana saja!)
         </div>
